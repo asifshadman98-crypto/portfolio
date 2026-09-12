@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-slate-200 antialiased;
+}
+
+::selection {
+  @apply bg-accent/30 text-white;
+}
+
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* Subtle dotted grid used behind the hero */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(56 189 248 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(56 189 248 / 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
