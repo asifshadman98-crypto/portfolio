@@ -2,6 +2,8 @@
 
 A clean, modern single-page portfolio for **Asif Shadman Khan**, a third-year Software Engineering student at Metropolitan University. Built with Next.js, TypeScript, and Tailwind CSS.
 
+**Live site:** [https://asifshadman98-crypto.github.io/portfolio/](https://asifshadman98-crypto.github.io/portfolio/)
+
 ## Sections
 
 - **Navbar** — sticky, compacts on scroll, mobile hamburger menu
@@ -80,23 +82,28 @@ portfolio/
     └── profile.png
 ```
 
-## Publishing to GitHub
+## Deployment
+
+The site is deployed to **GitHub Pages** via GitHub Actions. Every push to `main` automatically rebuilds the site and republishes it — no manual steps needed.
+
+**Live URL:** https://asifshadman98-crypto.github.io/portfolio/
+
+### How it works
+
+- [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) builds a fully static export of the site (`next.config.mjs` enables `output: "export"` and the `/portfolio` base path only when `DEPLOY_TARGET=github-pages`, so local development is unaffected) and publishes the `out/` directory to GitHub Pages.
+- One-time setup in GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+
+### Manual deploy
 
 ```bash
-# Initialize git (first time only)
-git init
 git add .
-git commit -m "Initial portfolio commit"
-
-# Create the repo on github.com first, then:
-git branch -M main
-git remote add origin https://github.com/asifshadman98-crypto/portfolio.git
-git push -u origin main
+git commit -m "Update portfolio"
+git push   # GitHub Actions handles the rest
 ```
 
-## Deploying to Vercel
+## Deploying to Vercel (alternative)
 
-1. Push the repository to GitHub (commands above).
+1. Push the repository to GitHub.
 2. Go to [vercel.com](https://vercel.com) and sign in with GitHub.
 3. Click **Add New → Project** and import the repository.
 4. Vercel auto-detects Next.js — just click **Deploy**.
